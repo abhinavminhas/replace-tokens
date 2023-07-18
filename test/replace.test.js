@@ -171,14 +171,14 @@ describe('REPLACE TOKENS TESTS', () => {
 
     it('Test 10: Replace token, file not found.', async () => {
         try {
-            await replace.replaceTokens('./test/test-files/file_not_found.txt', "?=.", '')
+            await replace.replaceTokens('./test/test-files/file_not_found.txt', "?=.")
             assert.fail('No Error')
         } catch (err) {
             const error = Error(err)
             expect(error.message.includes('ENOENT: no such file or directory')).to.be.true
         }
     })
-
+    
 })
 
 after(async () => {
