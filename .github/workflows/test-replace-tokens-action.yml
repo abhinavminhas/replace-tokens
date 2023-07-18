@@ -66,6 +66,6 @@ jobs:
         files: | 
             ./test/test-files/multiple_files_mutiple_tokens/file1.json | ./test/test-files/multiple_files_mutiple_tokens/file2.csv |
             ./test/test-files/multiple_files_mutiple_tokens/file3.yml | ./test/test-files/multiple_files_mutiple_tokens/file4.txt
-        replacements: 54c213d6-ac7f-44cb-8ac2-91e6a175af3d | f859e2ad-2c56-40e5-9ead-539095ba6acd, 323acd81-6a1f-4eb8-bc6c-22a7711ab8ba | e10b5211-5fdb-4224-bb81-714bd3759c71
+        replacements: 54c213d6-ac7f-44cb-8ac2-91e6a175af3d=f859e2ad-2c56-40e5-9ead-539095ba6acd | 323acd81-6a1f-4eb8-bc6c-22a7711ab8ba=e10b5211-5fdb-4224-bb81-714bd3759c71
         delimiter: |
     
