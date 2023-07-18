@@ -36,6 +36,14 @@ jobs:
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
+        artifacts: |
+              dist/
+              src/
+              action.yml
+              index.js
+              LICENSE
+              package-local.json
+              package.json
         tag: ${{ env.RELEASE_NAME }}
         body: ${{ env.RELEASE_NOTES }}
         draft: ${{ env.DRAFT }}
