@@ -55,13 +55,14 @@
   ```
 
 - **Example 5:** _Use a different separator than comma (``` , ```). Important use case is when the token to be replaced is itself a comma or contains a comma._
+  - **Note:** _The delimiter is enclosed within single quotation marks in the below example since yml interprets | as "Literal Block Scalar", also required for other reserved keywords._
   ```
   - name: Replace Tokens
     uses: abhinavminhas/replace-tokens@main
     with:
       files: file1 | file2
       replacements: key1=value1 | key2=value2
-      delimiter: |
+      delimiter: '|'
   ```
 
 **Note** - Implementation for above examples can be checked [here](https://github.com/abhinavminhas/replace-tokens/blob/main/.github/workflows/test-replace-tokens-action.yml)
