@@ -65,4 +65,4 @@
       delimiter: '|'
   ```
 
-**Note** - Implementation for above examples can be checked [here](https://github.com/abhinavminhas/replace-tokens/blob/main/.github/workflows/test-replace-tokens-action.yml)
+**Note:** _Implementation for above examples can be checked [here](https://github.com/abhinavminhas/replace-tokens/blob/main/.github/workflows/test-replace-tokens-action.yml)._
