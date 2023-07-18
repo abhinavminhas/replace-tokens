@@ -32,8 +32,31 @@ jobs:
           npm run build --if-present
           npm test
 
-    - name: Replace Tokens (Replace a token in a file)
+    - name: Replace Tokens ( <<<< Replace a token in a file >>>> )
       uses: abhinavminhas/replace-tokens@main
       with:
         files: ./test/test-files/single_file_replace_single_token.txt
         replacements: .=?
+
+    - name: Replace Tokens ( <<<< Replace multiple tokens in a file >>>> )
+      uses: abhinavminhas/replace-tokens@main
+      with:
+        files: ./test/test-files/single_file_replace_multiple_different_tokens.txt
+        replacements: Hello=Hi, ....=?
+
+    - name: Replace Tokens ( <<<< Replace a token in multiple files >>>> )
+      uses: abhinavminhas/replace-tokens@main
+      with:
+        files: | 
+            ./test/test-files/multiple_files_single_token/file1.json, ./test/test-files/multiple_files_single_token/file2.csv, 
+            ./test/test-files/multiple_files_single_token/file3.yml, ./test/test-files/multiple_files_single_token/file4.txt
+        replacements: 54c213d6-ac7f-44cb-8ac2-91e6a175af3d=18c11372-3b9a-49e1-98d1-6afafc247758
+    
+    - name: Replace Tokens ( <<<< Replace multiple tokens in multiple files >>>> )
+      uses: abhinavminhas/replace-tokens@main
+      with:
+        files: | 
+            ./test/test-files/multiple_files_mutiple_tokens/file1.json, ./test/test-files/multiple_files_mutiple_tokens/file2.csv, 
+            ./test/test-files/multiple_files_mutiple_tokens/file3.yml, ./test/test-files/multiple_files_mutiple_tokens/file4.txt"
+        replacements: 54c213d6-ac7f-44cb-8ac2-91e6a175af3d=f859e2ad-2c56-40e5-9ead-539095ba6acd, 323acd81-6a1f-4eb8-bc6c-22a7711ab8ba=e10b5211-5fdb-4224-bb81-714bd3759c71
+    
