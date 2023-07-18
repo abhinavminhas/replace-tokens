@@ -12,7 +12,7 @@
   - **Example:** ``` file1, file2 ```
 - `replacements` **(Required)** - Token (to be replaced) & value comma-separated pairs (TOKEN=value).  
   - **Example:** ``` key1=value1, key2=value2 ```
-  - **Note:** _Values can be variables/secrets._
+  - **Note:** _Values can be variables / secrets._
 - `delimiter` **(Optional)** - Defines separator/delimiter to be used, default value is comma (``` , ```).  
   - **Example:** ``` | ``` or ``` ; ``` or ``` : ``` or ``` - ``` etc.
 
