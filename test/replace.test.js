@@ -2,7 +2,7 @@
 
 const { before } = require('mocha')
 const replace = require('../src/replace')
-const expect = require('chai').expect
+const {assert, expect} = require('chai')
 const fs = require('fs')
 
 before(async () => {
@@ -169,6 +169,16 @@ describe('REPLACE TOKENS TESTS', () => {
         expect(data.includes('.')).to.be.equals(true)
     })
 
+    it('Test 10: Replace token, file not found.', async () => {
+        try {
+            await replace.replaceTokens('./test/test-files/file_not_found.txt', "?=.")
+            assert.fail('No Error')
+        } catch (err) {
+            const error = Error(err)
+            expect(error.message.includes('ENOENT: no such file or directory')).to.be.true
+        }
+    })
+    
 })
 
 after(async () => {
