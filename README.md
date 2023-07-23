@@ -58,7 +58,7 @@
       replacements: key1=value1, key2=value2
   ```
 
-- **Example 5:** _Use a different separator than comma (``` , ```).
+- **Example 5:** _Use a different separator than comma (``` , ```)._
   ```
   - name: Replace Tokens
     uses: abhinavminhas/replace-tokens@main
