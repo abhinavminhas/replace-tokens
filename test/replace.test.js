@@ -28,6 +28,8 @@ before(async () => {
     fs.writeFileSync('./test/test-files/multiple_files_mutiple_tokens/file3.yml', content)
     content = 'name=file4\r\nkey=_KEY_\r\nsecret=_SECRET_'
     fs.writeFileSync('./test/test-files/multiple_files_mutiple_tokens/file4.txt', content)
+    content = '....'
+    fs.writeFileSync('./test/test-files/replacement_value_has_equal_to.txt', content)
 })                                                                      
 
 describe('REPLACE TOKENS TESTS', () => {
@@ -146,30 +148,70 @@ describe('REPLACE TOKENS TESTS', () => {
     })
 
     it('Test 7: Replace token, separator is null.', async () => {
-        await replace.replaceTokens('./test/test-files/single_file_replace_single_token.txt', "?=.", null)
+        await replace.replaceTokens('./test/test-files/single_file_replace_single_token.txt', ".=*", null)
         const data = fs.readFileSync('./test/test-files/single_file_replace_single_token.txt', 'utf8')
         expect(data).to.not.be.equals(undefined)
-        expect(data.includes('?')).to.be.equals(false)
-        expect(data.includes('.')).to.be.equals(true)
+        expect(data.includes('.')).to.be.equals(false)
+        expect(data.includes('*')).to.be.equals(true)
     })
 
     it('Test 8: Replace token, separator is undefined.', async () => {
-        await replace.replaceTokens('./test/test-files/single_file_replace_single_token.txt', "?=.", undefined)
+        await replace.replaceTokens('./test/test-files/single_file_replace_single_token.txt', "*=;", undefined)
         const data = fs.readFileSync('./test/test-files/single_file_replace_single_token.txt', 'utf8')
         expect(data).to.not.be.equals(undefined)
-        expect(data.includes('?')).to.be.equals(false)
-        expect(data.includes('.')).to.be.equals(true)
+        expect(data.includes('*')).to.be.equals(false)
+        expect(data.includes(';')).to.be.equals(true)
     })
 
     it('Test 9: Replace token, separator is blank.', async () => {
-        await replace.replaceTokens('./test/test-files/single_file_replace_single_token.txt', "?=.", '')
+        await replace.replaceTokens('./test/test-files/single_file_replace_single_token.txt', ";=#", '')
+        const data = fs.readFileSync('./test/test-files/single_file_replace_single_token.txt', 'utf8')
+        expect(data).to.not.be.equals(undefined)
+        expect(data.includes(';')).to.be.equals(false)
+        expect(data.includes('#')).to.be.equals(true)
+    })
+
+    it('Test 10: Replace token, separator is whitespaces.', async () => {
+        await replace.replaceTokens('./test/test-files/single_file_replace_single_token.txt', "#=::", '    ')
+        const data = fs.readFileSync('./test/test-files/single_file_replace_single_token.txt', 'utf8')
+        expect(data).to.not.be.equals(undefined)
+        expect(data.includes('#')).to.be.equals(false)
+        expect(data.includes('::')).to.be.equals(true)
+    })
+
+    it('Test 11: Replace token, filename with trailing spaces.', async () => {
+        await replace.replaceTokens('  ./test/test-files/single_file_replace_single_token.txt ', "::=?", '')
+        const data = fs.readFileSync('./test/test-files/single_file_replace_single_token.txt', 'utf8')
+        expect(data).to.not.be.equals(undefined)
+        expect(data.includes('::')).to.be.equals(false)
+        expect(data.includes('?')).to.be.equals(true)
+    })
+
+    it('Test 12: Replace token, replacement values with trailing spaces and whitespaces.', async () => {
+        await replace.replaceTokens('./test/test-files/single_file_replace_single_token.txt', "?=[    . .    ]", '')
         const data = fs.readFileSync('./test/test-files/single_file_replace_single_token.txt', 'utf8')
         expect(data).to.not.be.equals(undefined)
         expect(data.includes('?')).to.be.equals(false)
+        expect(data.includes('    . .    ')).to.be.equals(true)
+    })
+
+    it('Test 13: Replace token, replacement key with trailing spaces and whitespaces.', async () => {
+        await replace.replaceTokens('./test/test-files/single_file_replace_single_token.txt', "[    . .    ]=.", '')
+        const data = fs.readFileSync('./test/test-files/single_file_replace_single_token.txt', 'utf8')
+        expect(data).to.not.be.equals(undefined)
+        expect(data.includes('    ..    ')).to.be.equals(false)
         expect(data.includes('.')).to.be.equals(true)
     })
 
-    it('Test 10: Replace token, file not found.', async () => {
+    it('Test 14: Replace token, replacement value has =.', async () => {
+        await replace.replaceTokens('./test/test-files/replacement_value_has_equal_to.txt', "....=====", '')
+        const data = fs.readFileSync('./test/test-files/replacement_value_has_equal_to.txt', 'utf8')
+        expect(data).to.not.be.equals(undefined)
+        expect(data.includes('....')).to.be.equals(false)
+        expect(data.includes('====')).to.be.equals(true)
+    })
+
+    it('Test 15: Replace token, file not found.', async () => {
         try {
             await replace.replaceTokens('./test/test-files/file_not_found.txt', "?=.")
             assert.fail('No Error')
@@ -196,5 +238,6 @@ after(async () => {
         fs.writeFileSync('./test/test-files/multiple_files_mutiple_tokens/file2.csv', content)
         fs.writeFileSync('./test/test-files/multiple_files_mutiple_tokens/file3.yml', content)
         fs.writeFileSync('./test/test-files/multiple_files_mutiple_tokens/file4.txt', content)
+        fs.writeFileSync('./test/test-files/replacement_value_has_equal_to.txt', content)
     }
 })
