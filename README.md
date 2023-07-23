@@ -67,6 +67,6 @@
       replacements: key1=value1 | key2=value2
       delimiter: '|'
   ```
-  - **Note:** _The delimiter is enclosed within single quotation marks in the below example since yml interprets | as "Literal Block Scalar", also required for other reserved keywords._
+  - **Note:** _The delimiter is enclosed within single quotation marks in the above example since yml interprets ```|``` as "Literal Block Scalar", also required for other reserved keywords._
 
 **Note:** _Implementation for above examples can be checked [here](https://github.com/abhinavminhas/replace-tokens/blob/main/.github/workflows/test-replace-tokens-action.yml)._
