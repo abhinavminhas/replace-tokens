@@ -32,6 +32,8 @@ jobs:
           npm run build --if-present
           npm test
 
+    # Readme Examples
+
     - name: Replace Tokens ( <<<< Example 1 - Replace a token in a file. >>>> )
       uses: abhinavminhas/replace-tokens@main
       with:
