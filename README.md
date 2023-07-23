@@ -12,9 +12,13 @@
   - **Example:** ``` file1, file2 ```
 - `replacements` **(Required)** - Token (to be replaced) & value comma-separated pairs (TOKEN=value).  
   - **Example:** ``` key1=value1, key2=value2 ```
-  - **Note:** _Values can be variables/secrets._
+  - **Note:**
+    - _key & value pairs ignore leading & trailing whitespaces. Enclose within ```[]``` for such expressions._
+    - _key (token) cannot have any ```=``` but value can. Use a different key (token) in such case._
+    - _key, value or pairs can be CI/CD variables / secrets._
 - `delimiter` **(Optional)** - Defines separator/delimiter to be used, default value is comma (``` , ```).  
   - **Example:** ``` | ``` or ``` ; ``` or ``` : ``` or ``` - ``` etc.
+  - **Note:** _Ignores whitespaces._
 
 ## Usage
 
@@ -54,8 +58,7 @@
       replacements: key1=value1, key2=value2
   ```
 
-- **Example 5:** _Use a different separator than comma (``` , ```). Important use case is when the token to be replaced is itself a comma or contains a comma._
-  - **Note:** _The delimiter is enclosed within single quotation marks in the below example since yml interprets | as "Literal Block Scalar", also required for other reserved keywords._
+- **Example 5:** _Use a different separator than comma (``` , ```)._
   ```
   - name: Replace Tokens
     uses: abhinavminhas/replace-tokens@main
@@ -64,5 +67,6 @@
       replacements: key1=value1 | key2=value2
       delimiter: '|'
   ```
+  - **Note:** _The delimiter is enclosed within single quotation marks in the above example since yml interprets ```|``` as "Literal Block Scalar", also required for other reserved keywords._
 
 **Note:** _Implementation for above examples can be checked [here](https://github.com/abhinavminhas/replace-tokens/blob/main/.github/workflows/test-replace-tokens-action.yml)._
