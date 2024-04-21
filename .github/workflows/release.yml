@@ -1,9 +1,9 @@
 name: Release
 
 env:
-    RELEASE_NAME: "v1.2"
+    RELEASE_NAME: "v1.1"
     RELEASE_NOTES: |
-      - Github replace tokens action. (Initial Release)
+      - Update action Node version from Node 16 to Node 18.
     DRAFT: false
     PRERELEASE: false
     
@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        node-version: [ 16.x ]
+        node-version: [ 18.x ]
 
     steps:
     - name: Checkout Repository
