@@ -1,9 +1,9 @@
 name: Release
 
 env:
-    RELEASE_NAME: "v1.1"
+    RELEASE_NAME: "v1.2"
     RELEASE_NOTES: |
-      - Update action Node version from Node 16 to Node 18.
+      - Update action Node version from Node 18 to Node 20.
     DRAFT: false
     PRERELEASE: false
     
