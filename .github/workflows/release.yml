@@ -1,9 +1,9 @@
 name: Release
 
 env:
-    RELEASE_NAME: "v1.1"
+    RELEASE_NAME: "v1.2"
     RELEASE_NOTES: |
-      - Update action Node version from Node 16 to Node 18.
+      - Update action Node version from Node 18 to Node 20.
     DRAFT: false
     PRERELEASE: false
     
@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        node-version: [ 18.x ]
+        node-version: [ 20.x ]
 
     steps:
     - name: Checkout Repository

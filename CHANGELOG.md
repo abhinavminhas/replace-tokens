@@ -3,6 +3,10 @@ All notable changes to this project documented here.
 
 ## [Released]
 
+## [1.2](https://github.com/abhinavminhas/replace-tokens/releases/tag/v1.2) - 2024-04-21
+### Changed
+- Update action Node version from Node 18 to Node 20.
+
 ## [1.1](https://github.com/abhinavminhas/replace-tokens/releases/tag/v1.1) - 2024-04-21
 ### Changed
 - Update action Node version from Node 16 to Node 18.
