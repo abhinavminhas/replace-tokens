@@ -1,4 +1,4 @@
-name: Test Action (Replace Tokens) - @tags
+name: Test Action (Replace Tokens) -> @tags
 
 on:
   workflow_dispatch:
