@@ -17,14 +17,14 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        node-version: [ 20.x ]
+        node-version: [ 24.x ]
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Set Up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v5
       with:
         node-version: ${{ matrix.node-version }}
     
@@ -35,6 +35,7 @@ jobs:
           npm run coverage
 
     - name: Upload Coverage Reports To Codecov
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v6
       with:
+        files: ./coverage/lcov.info
         token: ${{ secrets.CODECOV_TOKEN }}

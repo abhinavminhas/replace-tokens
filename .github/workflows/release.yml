@@ -1,9 +1,10 @@
 name: Release
 
 env:
-    RELEASE_NAME: "v1.2"
+    RELEASE_NAME: "v1.3"
     RELEASE_NOTES: |
-      - Update action Node version from Node 18 to Node 20.
+      - Update action Node version from Node 20 to Node 24.
+      - Remediate vulnerable dependencies.
     DRAFT: false
     PRERELEASE: false
     
@@ -16,14 +17,14 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        node-version: [ 20.x ]
+        node-version: [ 24.x ]
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Set Up Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v5
       with:
         node-version: ${{ matrix.node-version }}
 
