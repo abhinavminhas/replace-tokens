@@ -9,6 +9,9 @@ on:
     branches: [ main ]
     paths-ignore:
       - '**.md'
+      - '.github/workflows/release.yml'
+      - '.github/workflows/test-replace-tokens-action-main.yml'
+      - '.github/workflows/test-replace-tokens-action-released-tag.yml'
   workflow_dispatch:
 
 jobs:
