@@ -7,7 +7,7 @@
     "cleanUp": "true",
     "build": "ncc build index.js",
     "test": "mocha",
-    "coverage": "nyc --reporter=lcov npm test && codecov"
+    "coverage": "nyc --reporter=lcov npm test"
   },
   "repository": {
     "type": "git",
