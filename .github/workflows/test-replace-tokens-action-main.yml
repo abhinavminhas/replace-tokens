@@ -1,4 +1,4 @@
-name: Test Action (Replace Tokens) -> @main
+name: Test Action (Replace Tokens) - [ @main ]
 
 # Note: Always build and push updated dist/ for use in tag -> @main
 on:
