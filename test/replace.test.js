@@ -211,7 +211,23 @@ describe('REPLACE TOKENS TESTS', () => {
         expect(data.includes('====')).to.be.equals(true)
     })
 
-    it('Test 15: Replace token, file not found.', async () => {
+    it('Test 15: Read file and fail to write when file is read-only.', async () => {
+        const filePath = './test/test-files/replacement_value_has_equal_to.txt'
+        fs.writeFileSync(filePath, '....')
+        fs.chmodSync(filePath, 0o444)
+        try {
+            await replace.replaceTokens(filePath, '....=ERROR')
+            assert.fail('No Error')
+        } catch (err) {
+            expect(err).to.not.be.undefined
+            expect(['EACCES', 'EPERM']).to.include(err.code)
+        } finally {
+            fs.chmodSync(filePath, 0o666)
+            fs.writeFileSync(filePath, '....')
+        }
+    })
+
+    it('Test 16: Replace token, file not found.', async () => {
         try {
             await replace.replaceTokens('./test/test-files/file_not_found.txt', "?=.")
             assert.fail('No Error')
