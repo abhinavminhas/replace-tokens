@@ -3,6 +3,12 @@ All notable changes to this project documented here.
 
 ## [Released]
 
+## [1.4](https://github.com/abhinavminhas/replace-tokens/releases/tag/v1.4) - 2026-10-18
+### Changed
+- Update `@actions/core` from 1.10.0 to 1.11.1.
+### Security Updates
+- [CVE-2026-41907](https://github.com/advisories/GHSA-w5hq-g745-h8pq)
+
 ## [1.3](https://github.com/abhinavminhas/replace-tokens/releases/tag/v1.3) - 2026-05-17
 ### Changed
 - Update action Node version from Node 20 to Node 24.
