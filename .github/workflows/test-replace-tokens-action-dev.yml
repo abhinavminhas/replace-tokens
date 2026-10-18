@@ -4,8 +4,8 @@ name: Test Action (Replace Tokens) - [ @dev ]
 on:
   push:
     branches: [ dev ]
-    paths-ignore:
-      - '**.md'
+    paths:
+      - 'dist/index.js'
 
 jobs:
   build:
